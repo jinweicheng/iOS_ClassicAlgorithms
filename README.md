@@ -1,6 +1,12 @@
 ## 一、日常经典算法：
 
-1、数组中出现一次数据问题。
+* 1-1、数组中出现一次数据问题。
+* 1-2、逆波兰表达式。
+
+
+## 二、代码
+
+#### 2-1、数组中出现一次数据问题。
 
  测试数据(找到规律:数组中只出现一次的数据就是所有数据异或的结果)
  ```
@@ -27,7 +33,7 @@
         // 1000  ->0111
 ``` 
  
-* 1-1、数组中只有一个数据出现一次，其他数据都出现二次
+* 数组中只有一个数据出现一次，其他数据都出现二次
     
 ```
 int XOROperation(NSArray *array)
@@ -39,7 +45,7 @@ int XOROperation(NSArray *array)
     return result;
 }
 ```
-* 1-2、数组中只有二个数据出现一次，其他数据都出现二次
+* 数组中只有二个数据出现一次，其他数据都出现二次
 ```
 NSArray * findOnceValues(NSArray *array)
 {
@@ -79,3 +85,31 @@ NSArray * findOnceValues(NSArray *array)
 }
 ```
 
+#### 1-2、逆波兰表达式
+```
+        NSMutableArray *array = [NSMutableArray arrayWithObjects:@"10", @"6", @"9", @"3", @"+", @"-11", @"*", @"/", @"*", @"17", @"+", @"5", @"+", nil];
+        for (int i = 0; i < array.count ; i++) {
+            if ([array[i] isEqualToString:@"+"] || [array[i] isEqualToString:@"-"] ||
+                [array[i] isEqualToString:@"*"] || [array[i] isEqualToString:@"/"]) {
+                
+                NSString *top1 = [stack2 cw_pop];
+                NSString *top2 = [stack2 cw_pop];
+                if ([array[i] isEqualToString:@"+"]) {
+                    NSInteger result = [top2 integerValue] + [top1 integerValue];
+                    [stack2 cw_push:[NSString stringWithFormat:@"%ld",result]];
+                }else if ([array[i] isEqualToString:@"-"]){
+                    NSInteger result = [top2 integerValue] - [top1 integerValue];
+                    [stack2 cw_push:[NSString stringWithFormat:@"%ld",result]];
+                }else if ([array[i] isEqualToString:@"*"]){
+                    NSInteger result = [top2 integerValue] * [top1 integerValue];
+                    [stack2 cw_push:[NSString stringWithFormat:@"%ld",result]];
+                }else if ([array[i] isEqualToString:@"/"]){
+                    NSInteger result = [top2 integerValue] / [top1 integerValue];
+                    [stack2 cw_push:[NSString stringWithFormat:@"%ld",result]];
+                }
+            }else{
+                [stack2 cw_push:array[i]];
+            }
+        }
+        NSLog(@"result=%@",[stack2 cw_pop]);
+```
