@@ -85,8 +85,9 @@ NSArray * findOnceValues(NSArray *array)
     return onceValues.copy;
 }
 ```
+------------
 
-#### 1-2、逆波兰表达式
+#### 2-2、逆波兰表达式
 ```
         NSMutableArray *array = [NSMutableArray arrayWithObjects:@"10", @"6", @"9", @"3", @"+", @"-11", @"*", @"/", @"*", @"17", @"+", @"5", @"+", nil];
         for (int i = 0; i < array.count ; i++) {
@@ -114,3 +115,82 @@ NSArray * findOnceValues(NSArray *array)
         }
         NSLog(@"result=%@",[stack2 cw_pop]);
 ```
+------------
+
+#### 2-3、合并有序的链表
+
+```
+// 根据元素查找插入的下标(有序的链表插入)
+- (CWLinkedList *)cw_insertElement:(id)insertE position:(CWLinkedList *)node
+{
+    // 找到第一个大于等于insert元素的值
+    int index = 0;
+    CWLinkedList *list = self->_first;
+    while (list != nil) {
+        if ([list->ele intValue] >= [insertE intValue]) {
+            [self cw_addE:insertE index:index];
+            return self;
+        }
+        list = list->next;
+        index++;
+    }
+    // 没有找到大于等于待插入的元素
+    if (list == nil) {
+        [self cw_addE:insertE index:self.size];
+    }
+    return node;
+}
+
+//  合并二个有序的链表
+CWLinkedList * margeList(CWLinkedList *list1,CWLinkedList *list2)
+{
+    // list1的长度长
+    if (list1.size >list2.size) {
+        CWLinkedList *list = list2->_first;
+        while (list != nil) {
+            [list1 cw_insertElement:list->ele position:list1];
+            list = list->next;
+        }
+        NSLog(@"%@",list1);
+        return list1;
+    }
+    // list2的长度长
+    else{
+        CWLinkedList *list = list1->_first;
+        while (list != nil) {
+            [list2 cw_insertElement:list->ele position:list2];
+            list = list->next;
+        }
+        NSLog(@"%@",list2);
+        return list2;
+    }
+}
+
+// 合并k个有序的链表
+CWLinkedList * margeKList(NSMutableArray *linkedLists)
+{
+    // 1、找到最长的list
+    CWLinkedList *maxList = linkedLists[0];
+    for (CWLinkedList *list in linkedLists) {
+        if (maxList.size < list.size) {
+            maxList = list;
+        }
+    }
+    [linkedLists removeObject:maxList];
+
+    // 2、遍历其他链表insert
+    for (int i = 0; i < linkedLists.count; i++) {
+        CWLinkedList *list = linkedLists[i];
+        list = list->_first;
+        while (list != nil) {
+            [maxList cw_insertElement:list->ele position:maxList];
+            list = list->next;
+        }
+    }
+    NSLog(@"%@",maxList);
+    return maxList;
+}
+
+```
+
+------------
