@@ -201,7 +201,7 @@ CWLinkedList * margeKList(NSMutableArray *linkedLists)
 ![image](https://github.com/jinweicheng/iOS_ClassicAlgorithms/blob/master/Resource_Image/交换二维数组行列数据2.png)
 
 ```
-按照对象分为三部分，对角线右边(i-j>0),对角线(i-j<0),对角线左边(i-j=0)
+按照对象线分为三部分，1）对角线右边(i-j>0),2）对角线(i-j<0),3）对角线左边(i-j=0)
 
 关键代码
 for(int i = 0;i < n2; i++){
