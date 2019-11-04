@@ -195,12 +195,26 @@ CWLinkedList * margeKList(NSMutableArray *linkedLists)
 ```
 #### 2-4、交换二维数组的行列数据
 
-```
+
 `参考图片`
 
 ![https://github.com/jinweicheng/iOS_ClassicAlgorithms/blob/master/ClassicAlgorithms/Array(Exchange-Low-Col)/Array(Exchange-Low-Col)/交换二维数组行列数据1.png]
 
 ![https://github.com/jinweicheng/iOS_ClassicAlgorithms/blob/master/ClassicAlgorithms/Array(Exchange-Low-Col)/Array(Exchange-Low-Col)/交换二维数组行列数据2.png]
 
+```
+按照对象分为三部分，对角线右边(i-j>0),对角线(i-j<0),对角线左边(i-j=0)
+
+关键代码
+for(int i = 0;i < n2; i++){
+    for(int j = 0; j < n2; j++){
+        // 属于对角线右边部分
+        if(i - j > 0){
+            NSNumber *temp = array2[i][j];
+            array2[i][j] = array2[j][i];
+            array2[j][i] = temp;
+        }
+    }
+}
 ```
 ------------
