@@ -198,9 +198,9 @@ CWLinkedList * margeKList(NSMutableArray *linkedLists)
 
 `参考图片`
 
-![https://github.com/jinweicheng/iOS_ClassicAlgorithms/blob/master/ClassicAlgorithms/Array(Exchange-Low-Col)/Array(Exchange-Low-Col)/交换二维数组行列数据1.png]
+![](https://github.com/jinweicheng/iOS_ClassicAlgorithms/blob/master/ClassicAlgorithms/Array(Exchange-Low-Col)/Array(Exchange-Low-Col)/交换二维数组行列数据1.png)
 
-![https://github.com/jinweicheng/iOS_ClassicAlgorithms/blob/master/ClassicAlgorithms/Array(Exchange-Low-Col)/Array(Exchange-Low-Col)/交换二维数组行列数据2.png]
+![](https://github.com/jinweicheng/iOS_ClassicAlgorithms/blob/master/ClassicAlgorithms/Array(Exchange-Low-Col)/Array(Exchange-Low-Col)/交换二维数组行列数据2.png)
 
 ```
 按照对象分为三部分，对角线右边(i-j>0),对角线(i-j<0),对角线左边(i-j=0)
