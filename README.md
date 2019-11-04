@@ -195,13 +195,9 @@ CWLinkedList * margeKList(NSMutableArray *linkedLists)
 ```
 #### 2-4、交换二维数组的行列数据
 
-图片测试
 `参考图片`
 
-
 ![image](https://github.com/jinweicheng/iOS_ClassicAlgorithms/blob/master/Resource_Image/交换二维数组行列数据1.png)
-
-
 ![image](https://github.com/jinweicheng/iOS_ClassicAlgorithms/blob/master/Resource_Image/交换二维数组行列数据2.png)
 
 ```
