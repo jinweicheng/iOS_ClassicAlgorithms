@@ -3,7 +3,8 @@
 * 1-1、数组中出现一次数据问题。
 * 1-2、逆波兰表达式。
 * 1-3、合并有序链表。
-* 1-4、交换二维数组的行列数据。
+* 1-4、反转链表。
+* 1-5、交换二维数组的行列数据。
 
 
 ## 二、代码
@@ -192,8 +193,49 @@ CWLinkedList * margeKList(NSMutableArray *linkedLists)
     return maxList;
 }
 
+
 ```
-#### 2-4、交换二维数组的行列数据
+
+#### 2-4、反转链表
+
+```
+/**
+ 反转链表(遍历一遍，每一次都添加新元素在头部,新增了一个链表，空间复杂度较高)
+*/
+- (CWLinkedList *)reverseLinkList
+{
+    CWLinkedList *list = self->_first;
+    CWLinkedList *resultList = [[CWLinkedList alloc] init];
+    while(list != nil){
+        [resultList cw_addE:list->ele index:0];
+        list = list->next;
+    }
+    return resultList;
+}
+
+/**
+ 反转链表优化方案(遍历一遍，只是改变next的指针)
+*/
+- (CWLinkedList *)good_reverseLinkList
+{
+    CWLinkedList *headList = self->_first;
+    CWLinkedList *preList = [[CWLinkedList alloc] init];
+    while(headList != nil){
+        // 保存下一节点
+        CWLinkedList *temp = headList->next;
+        // 修改next的指向
+        headList->next = preList;
+        // 实时修改preList的节点内容
+        preList = headList;
+        // 修改headList的内容
+        headList = temp;
+    }
+    return preList;
+}
+```
+
+
+#### 2-5、交换二维数组的行列数据
 
 `参考图片`
 
